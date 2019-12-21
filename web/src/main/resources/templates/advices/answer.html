@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD ANSWER ADVICE</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:include="fragments/navigation">MENU</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1>Add new answer advice</h1>
+            <form th:action="@{/advices/answer}" method="post" th:object="${advice}">
+                <div class="form-group">
+                    <label for="city">Email</label>
+                    <input id="city" type="email" class="form-control" th:field="*{email}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                    <label for="specializations">Specialization</label>
+                    <select id="specializations" th:field="*{specializationDTO.id}">
+                        <option th:each="s : ${specializations}" th:value="${s.id}" th:text="${s.name}" readonly="readonly"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="doctors">Doctor</label>
+                    <select id="doctors" th:field="*{doctorDTO.id}">
+                        <option th:each="d : ${doctor}" th:value="${d.id}" th:text="${d.name} + ' ' + ${d.surname}" readonly="readonly"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="questionDate">Question Date</label>
+                    <input id="questionDate" type="date" class="form-control" th:field="*{questionDate}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                    <label for="question">Question</label>
+                    <textarea id="question" class="form-control" th:field="*{question}" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                    <label for="answer">Answer</label>
+                    <textarea id="answer" class="form-control" th:field="*{answer}"/>
+                </div>
+                <div th:if="${errors.containsKey('answer')}">
+                    <p class="text-danger" th:text="${errors.get('answer')}"></p>
+                </div>
+                <input type="text" class="form-control" hidden="hidden" readonly="readonly" th:field="*{id}"/>
+                <div class="form-group">
+                    <button class="btn" style="background-color: #304FFE;" type="submit">Add</button>
+                    <button class="btn" style="background-color: #FFF176;" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>MODIFY WORKPLACE</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <h1>Edit workplace</h1>
+                <div th:if="${!errorsGlobal.isEmpty()}">
+                    <h3 class="text-danger text-center" th:each="e : ${errorsGlobal}" th:text="${e}"></h3>
+                </div>
+                <form th:action="@{/workplaces/modify}" method="post" th:object="${workplace}">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input id="name" type="text" class="form-control" th:field="*{name}"/>
+                    </div>
+                    <div th:if="${errors.containsKey('name')}">
+                        <p class="text-danger" th:text="${errors.get('name')}"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" class="form-control" th:field="*{description}"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="constituencies">Address</label>
+                        <select id="constituencies" th:field="*{addressDTO.id}">
+                            <option th:each="a : ${addresses}" th:value="${a.id}" th:text="${a.city} + ' ' + ${a.street} + ' ' + ${a.number} + ' ' + ${a.postalCode}"></option>
+                        </select>
+                    </div>
+                    <input type="text" class="form-control" hidden="hidden" readonly="readonly" th:field="*{id}"/>
+                    <div class="form-group">
+                        <button class="btn" style="background-color: #304FFE;" type="submit">Update</button>
+                        <button class="btn" style="background-color: #FFF176;" type="reset">Reset</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>OPINION</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/font-awesome/5.7.2/css/all.css" />
+
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-3" >
+                <div class="media" style="margin-top: 40px;">
+                    <div class="media-body">
+                        <div class="card mb-3" style="width: 30rem;">
+                            <div class="card-header">
+                                <h5 class="mt-0">Opinion details</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Patient: <span th:text="${opinion.patientDTO.name} + ' ' + ${opinion.patientDTO.surname}"></span></p>
+                                <p>Doctor: <span th:text="${opinion.doctorDTO.name} + ' ' + ${opinion.doctorDTO.surname}"></span></p>
+                                <p>Description: <span th:text="${opinion.description}"></span></p>
+                                <p>Quality:  <span class="fa fa-star checked" th:each="star:${#numbers.sequence(0,opinion.quality - 1)}"></span></p>
+                                <p>Opinion date: <span th:text="${opinion.opinionDate}"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

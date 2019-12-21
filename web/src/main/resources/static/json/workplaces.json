@@ -1,0 +1,26 @@
+[
+  {
+    "id": null,
+    "name": "WAR CLINIC",
+    "description": "Medycyna dla wszytkich.",
+    "addressDTO": {
+      "id": null,
+      "city": "WARSZAWA",
+      "street": "WARZYWNA",
+      "number": 7,
+      "postalCode": "01-100"
+    }
+  },
+  {
+    "id": null,
+    "name": "KRAKOW CLINIC",
+    "description": "Medycyna estetyczna.",
+    "addressDTO": {
+      "id": null,
+      "city": "KRAKOW",
+      "street": "OLIWNA",
+      "number": 5,
+      "postalCode": "03-333"
+    }
+  }
+]

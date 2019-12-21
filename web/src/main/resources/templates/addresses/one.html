@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADDRESS</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-4" >
+                <div class="media" style="margin-top: 40px;">
+                    <div class="media-body">
+                        <div class="card mb-3" style="width: 18rem;">
+                            <div class="card-header">
+                                <h5 class="mt-0">Address details</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>City: <span th:text="${address.city}"></span></p>
+                                <p>Street: <span th:text="${address.street} + ' ' + ${address.number}"></span></p>
+                                <p>Postal code: <span th:text="${address.postalCode}"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

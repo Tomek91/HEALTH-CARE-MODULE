@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOW ALL VISITS</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="page-header text-center mt-4 mb-4">
+                    <h1>VISITS</h1>
+                </div>
+                <ul class="list-unstyled">
+                    <li th:each="v : ${visits}">
+                        <div class="card" style="margin-top: 20px;">
+                            <div class="card-header">
+                                <h5 class="mt-0 mb-1 header" th:text="${v.patientDTO.name} + ' ' + ${v.patientDTO.surname}"></h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    Doctor: <span th:text="${v.doctorDTO.name} + ' ' + ${v.doctorDTO.surname}"></span>
+                                    <br/>
+                                    Date: <span th:text="${v.date}"></span>
+                                    <br/>
+                                    Time: <span th:text="${v.time}"></span>
+                                    <br/>
+                                    Cost: <span th:text="${v.cost}"></span>
+                                    <br/>
+                                    Description: <span th:text="${v.description}"></span>
+                                </p>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                                        <a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/visits/modify/{id}(id=${v.id})}">EDIT</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/visits/{id}(id=${v.id})}">DETAILS</a>
+                                    </li>
+                                    <li  class="list-inline-item">
+                                        <form th:action="@{/visits/delete}" method="post" sec:authorize="hasRole('ROLE_ADMIN')">
+                                            <input type="text" name="id" th:value="${v.id}" hidden="hidden" readonly="readonly" />
+                                            <button class="btn btn-danger btn-sm mr-2" type="submit">DELETE</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

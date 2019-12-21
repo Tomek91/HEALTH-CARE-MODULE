@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD OPINION</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:include="fragments/navigation">MENU</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1>Add new opinion</h1>
+            <form th:action="@{/opinions/add}" method="post" th:object="${opinion}">
+                <div class="form-group">
+                    <label for="patients">Patient</label>
+                    <select id="patients" th:field="*{patientDTO.id}">
+                        <option th:each="p : ${patients}" th:value="${p.id}" th:text="${p.name} + ' ' + ${p.surname}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="doctors">Doctor</label>
+                    <select id="doctors" th:field="*{doctorDTO.id}">
+                        <option th:each="d : ${doctors}" th:value="${d.id}" th:text="${d.name} + ' ' + ${d.surname}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" class="form-control" th:field="*{description}"/>
+                </div>
+                <div th:if="${errors.containsKey('description')}">
+                    <p class="text-danger" th:text="${errors.get('description')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Quality</label>
+                    <select id="experience" th:field="*{quality}">
+                        <option th:each="q : ${qualities}" th:value="${q}" th:text="${q}"></option>
+                    </select>
+                </div>
+                <div th:if="${errors.containsKey('quality')}">
+                    <p class="text-danger" th:text="${errors.get('quality')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="opinionDate">Opinion date</label>
+                    <input id="opinionDate" type="date" class="form-control" th:field="*{opinionDate}"/>
+                </div>
+                <div th:if="${errors.containsKey('opinionDate')}">
+                    <p class="text-danger" th:text="${errors.get('opinionDate')}"></p>
+                </div>
+                <div class="form-group">
+                    <button class="btn" style="background-color: #304FFE;" type="submit">Add</button>
+                    <button class="btn" style="background-color: #FFF176;" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

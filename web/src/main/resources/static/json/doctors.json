@@ -1,0 +1,198 @@
+[
+  {
+    "id": null,
+    "name": "ULA",
+    "surname": "BAK",
+    "birthday": "1960-03-15",
+    "userName": "ub",
+    "password": "ub",
+    "email": "ub@wp.pl",
+    "active": true,
+    "registrationDate": "2014-05-05",
+    "roleDTO": {
+      "id": null,
+      "name": "USER_DOCTOR"
+    },
+    "experience": "11 lat studiów.",
+    "photo": "pic4.jpg",
+    "description": "Duża wiedza z zakresy okulistyki.",
+    "cost": 100,
+    "specializationDTO":   {
+      "id": null,
+      "name": "okulistyka"
+    },
+    "workplaceDTO": {
+      "id": null,
+      "name": "KRAKOW CLINIC",
+      "description": "Medycyna estetyczna.",
+      "addressDTO": {
+        "id": null,
+        "city": "KRAKOW",
+        "street": "OLIWNA",
+        "number": 5,
+        "postalCode": "03-333"
+      }
+    },
+    "nationalityDTO": {
+      "id": null,
+      "name": "USA"
+    }
+  },
+  {
+    "id": null,
+    "name": "MARCIN",
+    "surname": "NOREK",
+    "birthday": "1960-03-15",
+    "userName": "mn",
+    "password": "mn",
+    "email": "mn@wp.pl",
+    "active": true,
+    "registrationDate": "2011-01-05",
+    "roleDTO": {
+      "id": null,
+      "name": "USER_DOCTOR"
+    },
+    "experience": "studia w USA",
+    "photo": "pic5.jpg",
+    "description": "Duża widza z kardiochirurgii.",
+    "cost": 200,
+    "specializationDTO":   {
+      "id": null,
+      "name": "kardiologia"
+    },
+    "workplaceDTO": {
+      "id": null,
+      "name": "KRAKOW CLINIC",
+      "description": "Medycyna estetyczna.",
+      "addressDTO": {
+        "id": null,
+        "city": "KRAKOW",
+        "street": "OLIWNA",
+        "number": 5,
+        "postalCode": "03-333"
+      }
+    },
+    "nationalityDTO": {
+      "id": null,
+      "name": "ROSJA"
+    }
+  },
+  {
+    "id": null,
+    "name": "MAREK",
+    "surname": "WACLAWCZYK",
+    "birthday": "1995-01-11",
+    "userName": "mw",
+    "password": "mw",
+    "email": "mw@wp.pl",
+    "active": true,
+    "registrationDate": "2018-03-05",
+    "roleDTO": {
+      "id": null,
+      "name": "USER_DOCTOR"
+    },
+    "experience": "pierwsza praca.",
+    "photo": "pic1.jpg",
+    "description": "Pierwszy rok specjalizacji z ginekologii.",
+    "cost": 300,
+    "specializationDTO":   {
+      "id": null,
+      "name": "ginekolog"
+    },
+    "workplaceDTO": {
+      "id": null,
+      "name": "KRAKOW CLINIC",
+      "description": "Medycyna estetyczna.",
+      "addressDTO": {
+        "id": null,
+        "city": "KRAKOW",
+        "street": "OLIWNA",
+        "number": 5,
+        "postalCode": "03-333"
+      }
+    },
+    "nationalityDTO": {
+      "id": null,
+      "name": "POLSKA"
+    }
+  },
+  {
+    "id": null,
+    "name": "MACIEJ",
+    "surname": "LEW",
+    "birthday": "1976-03-15",
+    "userName": "ml",
+    "password": "ml",
+    "email": "ml@wp.pl",
+    "active": true,
+    "registrationDate": "2016-04-05",
+    "roleDTO": {
+      "id": null,
+      "name": "USER_DOCTOR"
+    },
+    "experience": "profesor z okulistyki.",
+    "photo": "pic2.jpg",
+    "description": "Najlepszy lekarz w kraju.",
+    "cost": 100,
+    "specializationDTO":   {
+      "id": null,
+      "name": "okulistyka"
+    },
+    "workplaceDTO": {
+      "id": null,
+      "name": "WAR CLINIC",
+      "description": "Medycyna dla wszytkich.",
+      "addressDTO": {
+        "id": null,
+        "city": "WARSZAWA",
+        "street": "WARZYWNA",
+        "number": 7,
+        "postalCode": "01-100"
+      }
+    },
+    "nationalityDTO": {
+      "id": null,
+      "name": "POLSKA"
+    }
+  },
+  {
+    "id": null,
+    "name": "ROBERT",
+    "surname": "KROLIK",
+    "birthday": "1960-03-15",
+    "userName": "rk",
+    "password": "rk",
+    "email": "rk@wp.pl",
+    "active": true,
+    "registrationDate": "2013-05-05",
+    "roleDTO": {
+      "id": null,
+      "name": "USER_DOCTOR"
+    },
+    "experience": "11 lat studiów.",
+    "photo": "pic3.jpg",
+    "description": "Onkologia to jego żywioł.",
+    "cost": 50,
+    "specializationDTO":   {
+      "id": null,
+      "name": "onkolog"
+    },
+    "workplaceDTO": {
+      "id": null,
+      "name": "WAR CLINIC",
+      "description": "Medycyna dla wszytkich.",
+      "addressDTO": {
+        "id": null,
+        "city": "WARSZAWA",
+        "street": "WARZYWNA",
+        "number": 7,
+        "postalCode": "01-100"
+      }
+    },
+    "nationalityDTO": {
+      "id": null,
+      "name": "BELGIA"
+    }
+  }
+]
+

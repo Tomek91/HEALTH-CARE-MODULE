@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>REGISTRATION DOCTOR</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:include="fragments/navigationWithoutLogin">MENU</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1>Add new doctor</h1>
+            <div th:if="${!errorsGlobal.isEmpty()}">
+                <h3 class="text-danger text-center" th:each="e : ${errorsGlobal}" th:text="${e}"></h3>
+            </div>
+            <form th:action="@{/registration/add-doctor}" method="post" th:object="${doctor}" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" class="form-control" th:field="*{name}"/>
+                </div>
+                <div th:if="${errors.containsKey('name')}">
+                    <p class="text-danger" th:text="${errors.get('name')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname</label>
+                    <input id="surname" type="text" class="form-control" th:field="*{surname}"/>
+                </div>
+                <div th:if="${errors.containsKey('surname')}">
+                    <p class="text-danger" th:text="${errors.get('surname')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Birthday</label>
+                    <input id="birthday" type="date" class="form-control" th:field="*{birthday}"/>
+                </div>
+                <div th:if="${errors.containsKey('birthday')}">
+                    <p class="text-danger" th:text="${errors.get('birthday')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input id="username" type="text" class="form-control" th:field="*{userName}"/>
+                </div>
+                <div th:if="${errors.containsKey('userName')}">
+                    <p class="text-danger" th:text="${errors.get('userName')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" class="form-control" th:field="*{password}"/>
+                </div>
+                <div th:if="${errors.containsKey('password')}">
+                    <p class="text-danger" th:text="${errors.get('password')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="passwordConfirmation">Password confirmation</label>
+                    <input id="passwordConfirmation" type="password" class="form-control" th:field="*{passwordConfirmation}"/>
+                </div>
+                <div th:if="${errors.containsKey('passwordConfirmation')}">
+                    <p class="text-danger" th:text="${errors.get('passwordConfirmation')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" class="form-control" th:field="*{email}"/>
+                </div>
+                <div th:if="${errors.containsKey('email')}">
+                    <p class="text-danger" th:text="${errors.get('email')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Experience</label>
+                    <textarea id="experience" class="form-control" th:field="*{experience}"/>
+                </div>
+                <div th:if="${errors.containsKey('experience')}">
+                    <p class="text-danger" th:text="${errors.get('experience')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="file">File</label>
+                    <input id="file" type="file" class="form-control-file" th:field="*{file}"/>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" class="form-control" th:field="*{description}"/>
+                </div>
+                <div th:if="${errors.containsKey('description')}">
+                    <p class="text-danger" th:text="${errors.get('description')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="cost">Cost</label>
+                    <input id="cost" type="number" class="form-control" th:field="*{cost}"/>
+                </div>
+                <div th:if="${errors.containsKey('cost')}">
+                    <p class="text-danger" th:text="${errors.get('cost')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="nationalities">Nationality</label>
+                    <select id="nationalities" th:field="*{nationalityDTO.id}">
+                        <option th:each="n : ${nationalities}" th:value="${n.id}" th:text="${n.name}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="specializations">Specialization</label>
+                    <select id="specializations" th:field="*{specializationDTO.id}">
+                        <option th:each="s : ${specializations}" th:value="${s.id}" th:text="${s.name}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="workplaces">Workplace</label>
+                    <select id="workplaces" th:field="*{workplaceDTO.id}">
+                        <option th:each="w : ${workplaces}" th:value="${w.id}" th:text="${w.name}"></option>
+                    </select>
+                </div>
+                <input type="text" class="form-control" hidden="hidden" readonly="readonly" th:field="*{roleDTO.id}"/>
+                <div class="form-group">
+                    <button class="btn" style="background-color: #304FFE;" type="submit">Add</button>
+                    <button class="btn" style="background-color: #FFF176;" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:include="fragments/footer"></div>
+</body>
+</html>

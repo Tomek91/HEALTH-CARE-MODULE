@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOW ALL PATIENT CARDS</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <ul class="list-unstyled">
+                    <li class="media my-3 border border-primary" th:each="pC : ${patientCardDiseases}">
+                        <div class="media-body">
+                            <h5 class="mt-0 mb-1 header" th:text="${pC.patientDTO.name} + ' ' + ${pC.patientDTO.surname}"></h5>
+                            <p>Doctor: <span th:text="${pC.doctorDTO.name} + ' ' + ${pC.doctorDTO.surname}"></span></p>
+                            <p>Description: <span th:text="${pC.description}"></span></p>
+                            <p>Date: <span th:text="${pC.date}"></span></p>
+                            <p>Disease name: <span th:text="${pC.diseaseDTO.name}"></span></p>
+                            <p>Disease importance: <span th:text="${pC.diseaseDTO.importance}"></span></p>
+                            <p>Specialization: <span th:text="${pC.diseaseDTO.specializationDTO.name}"></span></p>
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/patient-cards-disease/modify/{id}(id=${pC.id})}" sec:authorize="hasRole('ROLE_USER_DOCTOR')">EDIT</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/patient-cards-disease/{id}(id=${pC.id})}">DETAILS</a>
+                                </li>
+                                <li  class="list-inline-item">
+                                    <form th:action="@{/patient-cards-disease/delete}" method="post" sec:authorize="hasRole('ROLE_USER_DOCTOR')">
+                                        <input type="text" name="id" th:value="${pC.id}" hidden="hidden" readonly="readonly" />
+                                        <button class="btn btn-danger btn-sm mr-2" type="submit">DELETE</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

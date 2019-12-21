@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOW ALL VISITS</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:include="fragments/navigation">MENU</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div th:if="${visits.isEmpty()}">
+                <h3 class="text-danger text-center">YOU HAVEN'T GOT ANY VISITS</h3>
+            </div>
+            <ul class="list-unstyled">
+                <li class="media my-3" th:each="v : ${visits}">
+                    <div class="media-body" style="background-color: #FFF59D">
+                        <p class=" m-3">
+                            Patient: <span th:text="${v.patientDTO.name} + ' ' + ${v.patientDTO.surname}"></span>
+                            <br/>
+                            Date: <span th:text="${v.date}"></span>
+                            <br/>
+                            Time: <span th:text="${v.time}"></span>
+                            <br/>
+                            Cost: <span th:text="${v.cost}"></span>
+                            <br/>
+                            Description: <span th:text="${v.description}"></span>
+                        </p>
+                        <div class="d-inline" >
+                            <form th:action="@{/doctor-visits/add/new/{id}(id=${v.id})}" method="post" >
+                                <button class="btn btn-lg btn-block mr-2" style="background-color: #FF6E40" type="submit" th:disabled="${not v.isCanAddVisit}">START VISIT</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

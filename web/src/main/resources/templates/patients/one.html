@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PATIENT</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2" >
+                <div class="media">
+                    <div class="media-body">
+                        <div class="card mb-3" style="width: 18rem;">
+                            <div class="card-header">
+                                <h5 class="mt-0">Patient details</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Name: <span th:text="${patient.name}"></span></p>
+                                <p>Surname: <span th:text="${patient.surname}"></span></p>
+                                <p>Birthday: <span th:text="${patient.birthday}"></span></p>
+                                <p>Gender: <span th:text="${patient.gender}"></span></p>
+                                <p>Weight: <span th:text="${patient.weight}"></span></p>
+                                <p>Height: <span th:text="${patient.height}"></span></p>
+                                <p>Nationality: <span th:text="${patient.nationalityDTO.name}"></span></p>
+                                <p>Username: <span th:text="${patient.userName}"></span></p>
+<!--                                <p>Password: <span th:="${patient.password}"></span></p>-->
+                                <p>Email: <span th:text="${patient.email}"></span></p>
+                                <p>Active: <span th:text="${patient.active}"></span></p>
+                                <p>Registration date: <span th:text="${patient.registrationDate}"></span></p>
+                                <p>Credit card number: <span th:text="${patient.creditCardNumber}"></span></p>
+                                <p>Insurance number: <span th:text="${patient.insuranceNumber}"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

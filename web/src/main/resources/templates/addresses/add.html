@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD ADDRESS</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body class="d-flex flex-column">
+<div th:include="fragments/navigation">MENU</div>
+<div class="container" >
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1>Add new address</h1>
+            <div th:if="${!errorsGlobal.isEmpty()}">
+                <h3 class="text-danger text-center" th:each="e : ${errorsGlobal}" th:text="${e}"></h3>
+            </div>
+            <form th:action="@{/addresses/add}" method="post" th:object="${address}" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input id="city" type="text" class="form-control" th:field="*{city}"/>
+                </div>
+                <div th:if="${errors.containsKey('city')}">
+                    <p class="text-danger" th:text="${errors.get('city')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="street">Street</label>
+                    <input id="street" type="text" class="form-control" th:field="*{street}"/>
+                </div>
+                <div th:if="${errors.containsKey('street')}">
+                    <p class="text-danger" th:text="${errors.get('street')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="number">Number</label>
+                    <input id="number" type="number" class="form-control" th:field="*{number}"/>
+                </div>
+                <div th:if="${errors.containsKey('number')}">
+                    <p class="text-danger" th:text="${errors.get('number')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="postalCode">Postal code</label>
+                    <input id="postalCode" type="text" class="form-control" th:field="*{postalCode}"/>
+                </div>
+                <div th:if="${errors.containsKey('postalCode')}">
+                    <p class="text-danger" th:text="${errors.get('postalCode')}"></p>
+                </div>
+                <div class="form-group">
+                    <button class="btn" style="background-color: #304FFE;" type="submit">Add</button>
+                    <button class="btn" style="background-color: #FFF176;" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

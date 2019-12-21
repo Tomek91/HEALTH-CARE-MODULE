@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD PATIENT</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:include="fragments/navigation">MENU</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1>Add new patient</h1>
+            <div th:if="${!errorsGlobal.isEmpty()}">
+                <h3 class="text-danger text-center" th:each="e : ${errorsGlobal}" th:text="${e}"></h3>
+            </div>
+            <form th:action="@{/patients/add}" method="post" th:object="${patient}">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input id="name" type="text" class="form-control" th:field="*{name}"/>
+                </div>
+                <div th:if="${errors.containsKey('name')}">
+                    <p class="text-danger" th:text="${errors.get('name')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="surname">Surname</label>
+                    <input id="surname" type="text" class="form-control" th:field="*{surname}"/>
+                </div>
+                <div th:if="${errors.containsKey('surname')}">
+                    <p class="text-danger" th:text="${errors.get('surname')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="birthday">Birthday</label>
+                    <input id="birthday" type="date" class="form-control" th:field="*{birthday}"/>
+                </div>
+                <div th:if="${errors.containsKey('birthday')}">
+                    <p class="text-danger" th:text="${errors.get('birthday')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input id="username" type="text" class="form-control" th:field="*{userName}"/>
+                </div>
+                <div th:if="${errors.containsKey('userName')}">
+                    <p class="text-danger" th:text="${errors.get('userName')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" class="form-control" th:field="*{password}"/>
+                </div>
+                <div th:if="${errors.containsKey('password')}">
+                    <p class="text-danger" th:text="${errors.get('password')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" class="form-control" th:field="*{email}"/>
+                </div>
+                <div th:if="${errors.containsKey('email')}">
+                    <p class="text-danger" th:text="${errors.get('email')}"></p>
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="active" th:field="*{active}">
+                    <label class="form-check-label" for="active">Active</label>
+                </div>
+                <div th:if="${errors.containsKey('active')}">
+                    <p class="text-danger" th:text="${errors.get('active')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="registrationDate">Registration date</label>
+                    <input id="registrationDate" type="date" class="form-control" th:field="*{registrationDate}"/>
+                </div>
+                <div th:if="${errors.containsKey('registrationDate')}">
+                    <p class="text-danger" th:text="${errors.get('registrationDate')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="creditCardNumber">Credit Card Number</label>
+                    <input id="creditCardNumber" type="text" class="form-control" th:field="*{creditCardNumber}"/>
+                </div>
+                <div th:if="${errors.containsKey('creditCardNumber')}">
+                    <p class="text-danger" th:text="${errors.get('creditCardNumber')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="insuranceNumber">Insurance Number</label>
+                    <input id="insuranceNumber" type="text" class="form-control" th:field="*{insuranceNumber}"/>
+                </div>
+                <div th:if="${errors.containsKey('insuranceNumber')}">
+                    <p class="text-danger" th:text="${errors.get('insuranceNumber')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <ul id="gender" class="list-inline">
+                        <li class="list-inline-item mr-2" th:each="g : ${genders}">
+                            <input type="radio" th:field="*{gender}" th:value="${g}" class="mr-1"/>
+                            <label th:text="${g}"></label>
+                        </li>
+                    </ul>
+                </div>
+                <div th:if="${errors.containsKey('gender')}">
+                    <p class="text-danger" th:text="${errors.get('gender')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="weight">Weight</label>
+                    <input id="weight" type="number" class="form-control" th:field="*{weight}"/>
+                </div>
+                <div th:if="${errors.containsKey('weight')}">
+                    <p class="text-danger" th:text="${errors.get('weight')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="height">Height</label>
+                    <input id="height" type="number" class="form-control" th:field="*{height}"/>
+                </div>
+                <div th:if="${errors.containsKey('height')}">
+                    <p class="text-danger" th:text="${errors.get('height')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="nationalities">Nationality</label>
+                    <select id="nationalities" th:field="*{nationalityDTO.id}">
+                        <option th:each="n : ${nationalities}" th:value="${n.id}" th:text="${n.name}"></option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn" style="background-color: #304FFE;" type="submit">Add</button>
+                    <button class="btn" style="background-color: #FFF176;" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

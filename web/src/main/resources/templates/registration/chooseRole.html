@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CHOOSE ROLE</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:include="fragments/navigationWithoutLogin">MENU</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div class="card text-left">
+                <div class="card-header">
+                    <h1>Registration</h1>
+                </div>
+                <div class="card-body">
+                    <div th:if="${!errors.isEmpty()}">
+                        <h3 class="text-danger text-center" th:each="e : ${errors}" th:text="${e}"></h3>
+                    </div>
+                    <h5 class="card-title">Step 1 : choose role</h5>
+                    <div class="card-text">
+                        <form th:action="@{/registration/choose-role}" method="post" th:object="${role}">
+                            <div class="form-group">
+                                <div class="custom-control custom-radio" th:each="r, iStat : ${roles}">
+                                    <input type="radio" th:id="'customRadio' + ${iStat.index}" name="customRadio" class="custom-control-input mr-1" th:field="*{id}" th:value="${r.id}" />
+                                    <label class="custom-control-label" th:for="'customRadio' + ${iStat.index}" th:text="${r.name}"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button class="btn btn-lg btn-block" style="background-color: #304FFE;" type="submit">Next</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fixed-bottom" th:include="fragments/footer"></div>
+</body>
+</html>

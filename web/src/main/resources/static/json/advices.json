@@ -1,0 +1,204 @@
+[
+  {
+    "id": null,
+    "email": "test1@wp.pl",
+    "questionDate": "2018-03-03",
+    "question": "Boli mnie gardło. Co mam zrobić?",
+    "answer": "Proszę kupić tabletki. Jak to nie pomoże, proszę skonsultować się z lekarzem",
+    "specializationDTO": {
+      "id": null,
+      "name": "okulistyka"
+    },
+    "doctorDTO": {
+      "id": null,
+      "name": "ULA",
+      "surname": "BAK",
+      "birthday": "1960-03-15",
+      "userName": "ub",
+      "password": "ub",
+      "email": "ub@wp.pl",
+      "active": true,
+      "registrationDate": "2014-05-05",
+      "experience": "11 lat studiów.",
+      "photo": "pic4.jpg",
+      "description": "Duża wiedza z zakresy okulistyki.",
+      "cost": 100,
+      "specializationDTO":   {
+        "id": null,
+        "name": "okulistyka"
+      },
+      "workplaceDTO": {
+        "id": null,
+        "name": "KRAKOW CLINIC",
+        "description": "Medycyna estetyczna.",
+        "addressDTO": {
+          "id": null,
+          "city": "KRAKOW",
+          "street": "OLIWNA",
+          "number": 5,
+          "postalCode": "03-333"
+        }
+      },
+      "nationalityDTO": {
+        "id": null,
+        "name": "USA"
+      }
+    }
+  },
+  {
+    "id": null,
+    "email": "test2@wp.pl",
+    "questionDate": "2018-05-05",
+    "question": "Mam wysypkę. Byłam u kilku lekarzy i nie pomogli. Jest coraz gorzej.",
+    "answer": "Proszę natychmiast zawiadomić media żeby rozgłośnić sprawę.",
+    "specializationDTO": null,
+    "doctorDTO": null
+  },
+  {
+    "id": null,
+    "email": "test4@wp.pl",
+    "questionDate": "2018-05-05",
+    "question": "Jaką chorbę symulować, żeby nie iść do pracy?",
+    "answer": "Najlepsze jest przeziębienie, bo można zawsze symulować chorobę.",
+    "specializationDTO": null,
+    "doctorDTO": null
+  },
+  {
+    "id": null,
+    "email": "test3@wp.pl",
+    "questionDate": "2018-05-01",
+    "question": "Jak dłużej pochodzę to noga mi za każdym razem puchnie.",
+    "answer": "Przyczyny tego mogą być wielorakie. Proszę skonsultować sie z lekarzem",
+    "specializationDTO": {
+      "id": null,
+      "name": "kardiologia"
+    },
+    "doctorDTO": {
+      "id": null,
+      "name": "MARCIN",
+      "surname": "NOREK",
+      "birthday": "1960-03-15",
+      "userName": "mn",
+      "password": "mn",
+      "email": "mn@wp.pl",
+      "active": true,
+      "registrationDate": "2011-01-05",
+      "experience": "studia w USA",
+      "photo": "pic5.jpg",
+      "description": "Duża widza z kardiochirurgii.",
+      "cost": 200,
+      "specializationDTO":   {
+        "id": null,
+        "name": "kardiologia"
+      },
+      "workplaceDTO": {
+        "id": null,
+        "name": "KRAKOW CLINIC",
+        "description": "Medycyna estetyczna.",
+        "addressDTO": {
+          "id": null,
+          "city": "KRAKOW",
+          "street": "OLIWNA",
+          "number": 5,
+          "postalCode": "03-333"
+        }
+      },
+      "nationalityDTO": {
+        "id": null,
+        "name": "ROSJA"
+      }
+    }
+  },
+  {
+    "id": null,
+    "email": "test5@wp.pl",
+    "questionDate": "2018-01-05",
+    "question": "Witam , mam pytanie co to jest miednica mniejsza i co wchodzi w jej skład? W jaki sposób bada się taka miednicę aby rozwiać wątpliwości czy wszystko z nią w porządku ? I Jaki lekarz może mi ją zbadać? Bardzo proszę o o odpowiedz.pozdrawiam",
+    "answer": "Proponuję zacząć od ginekologa i ewentualnie proktologa. Badania robione w ciemno bez jakieś myśli przewodniej. Bardzo często nic nie wnoszą. ",
+    "specializationDTO": {
+      "id": null,
+      "name": "ginekolog"
+    },
+    "doctorDTO": {
+      "id": null,
+      "name": "MAREK",
+      "surname": "WACLAWCZYK",
+      "birthday": "1995-01-11",
+      "userName": "mw",
+      "password": "mw",
+      "email": "mw@wp.pl",
+      "active": true,
+      "registrationDate": "2018-03-05",
+      "experience": "pierwsza praca.",
+      "photo": "pic1.jpg",
+      "description": "Pierwszy rok specjalizacji z ginekologii.",
+      "cost": 300,
+      "specializationDTO":   {
+        "id": null,
+        "name": "ginekolog"
+      },
+      "workplaceDTO": {
+        "id": null,
+        "name": "KRAKOW CLINIC",
+        "description": "Medycyna estetyczna.",
+        "addressDTO": {
+          "id": null,
+          "city": "KRAKOW",
+          "street": "OLIWNA",
+          "number": 5,
+          "postalCode": "03-333"
+        }
+      },
+      "nationalityDTO": {
+        "id": null,
+        "name": "POLSKA"
+      }
+    }
+  },
+  {
+    "id": null,
+    "email": "test6@wp.pl",
+    "questionDate": "2019-05-05",
+    "question": "Witam. Jestem kilka miesięcy po założeniu korony na implant . Dopiero dzisiaj zobaczyłem, że między dziąsłem a koroną implantu jest ok. 1,5 mm przerwa ( luka) , w którą wpadają resztki jedzenia . Czy jest to normalne , czy powinienem zareklamować? ",
+    "answer": "Trudno odpowiedzieć jednoznacznie bez obserwacji jak wygląda dziąsło i czy nie potrzebuje dodatkowych zabiegów. Proszę zgłosić się do lekarza, który wykonywał pracę i porozmawiać o swoich spostrzeżeniach. Pozdrawiam serdecznie ",
+    "specializationDTO": {
+      "id": null,
+      "name": "ginekolog"
+    },
+    "doctorDTO": {
+      "id": null,
+      "name": "MAREK",
+      "surname": "WACLAWCZYK",
+      "birthday": "1995-01-11",
+      "userName": "mw",
+      "password": "mw",
+      "email": "mw@wp.pl",
+      "active": true,
+      "registrationDate": "2018-03-05",
+      "experience": "pierwsza praca.",
+      "photo": "pic1.jpg",
+      "description": "Pierwszy rok specjalizacji z ginekologii.",
+      "cost": 300,
+      "specializationDTO":   {
+        "id": null,
+        "name": "ginekolog"
+      },
+      "workplaceDTO": {
+        "id": null,
+        "name": "KRAKOW CLINIC",
+        "description": "Medycyna estetyczna.",
+        "addressDTO": {
+          "id": null,
+          "city": "KRAKOW",
+          "street": "OLIWNA",
+          "number": 5,
+          "postalCode": "03-333"
+        }
+      },
+      "nationalityDTO": {
+        "id": null,
+        "name": "POLSKA"
+      }
+    }
+  }
+]

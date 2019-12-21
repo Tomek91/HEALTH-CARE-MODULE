@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>MANAGE</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2" >
+                <div class="page-header text-center mt-4 mb-4">
+                    <h1>MANAGE</h1>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                        <a role="button" class="btn btn-info btn-lg btn-block" th:href="@{/setup/default-data}">LOAD DATA</a>
+                    </li>
+                    <li class="list-group-item">
+                        <a role="button" class="btn btn-info btn-lg btn-block" th:href="@{/login/reset}">CHANGE PASSWORD</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

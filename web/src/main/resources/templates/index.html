@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MAIN PAGE</title>
+
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/font-awesome/5.7.2/css/all.css" />
+
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+<div th:include="fragments/navigation">MENU</div>
+<div class="container">
+    <h1 class="jumbotron display-1 text-primary text-center">HEALTH CARE APP</h1>
+
+    <div class="row" >
+        <div class="col-8 offset-2">
+            <div class="card" style="background-color: lightyellow" >
+                <div class="card-body">
+                    <div th:if="${!errors.isEmpty()}">
+                        <h3 class="text-danger text-center" th:each="e : ${errors.values()}" th:text="${e}"></h3>
+                    </div>
+                    <h3>Find doctor and make an appointment</h3>
+                    <form th:action="@{/}" method="post" th:object="${visitCriteriaHomePage}">
+                        <div class="form-row align-items-center">
+                            <div class="col-sm-3 my-1">
+                                <label class="sr-only" for="nameOrSpecialization">Name or specialization</label>
+                                <input type="text" class="form-control" id="nameOrSpecialization" placeholder="name or special." th:field="*{nameOrSpecialization}">
+                            </div>
+                            <div class="col-sm-3 my-1">
+                                <label class="sr-only" for="inlineFormInputGroupCity">City</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="inlineFormInputGroupCity" placeholder="city" th:field="*{city}">
+                                </div>
+                            </div>
+                            <div class="col-auto my-1">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-8 offset-2" >
+            <ul class="list-group" >
+                <a role="button" class="btn btn-info btn-lg btn-block" th:href="@{/advices/add}">ASK A DOCTOR</a>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row mt-5" >
+        <div class="col">
+            <h3>The newest advices</h3>
+            <ul class="list-unstyled">
+                <li class="media my-3" style="background-color: oldlace" th:each="a : ${advices}">
+                    <div class="media-body m-1">
+                        <p >
+                            <span th:text="${a.question}"></span>
+                        </p>
+
+                        <div>
+                            <span th:text="${'ANSWER'}"></span>
+
+                            <div th:if="${a.doctorDTO eq null}">
+                                <div class="grid mt-2">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <img class="mr-3 rounded-circle d-inline" style="min-width: 70px; max-width: 20px;" th:src="@{/img/deafult.jpg}" th:alt="${'deafult'}">
+                                        </div>
+                                        <div class="col">
+                                            <span th:text="${'Admin'}"></span>
+                                            <br/>
+                                            <span th:text="${a.answer}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div th:if="${a.doctorDTO ne null}">
+                                <div class="grid mt-2">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <img class="mr-3 rounded-circle" style="min-width: 70px; max-width: 20px;" th:src="@{/img/{name}(name=${a.doctorDTO.photo})}" th:alt="${a.doctorDTO.photo}">
+                                        </div>
+                                        <div class="col">
+                                            <span th:text="${a.doctorDTO.name} + ' ' + ${a.doctorDTO.surname}"></span>
+                                            <br/>
+                                            <span th:text="${a.answer}"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col">
+            <h3>The newest opinions</h3>
+            <ul class="list-unstyled">
+                <li class="media my-3" style="background-color: oldlace" th:each="o : ${opinions}">
+                    <img class="mr-3 rounded-circle" style="min-width: 100px; max-width: 20px;" th:src="@{/img/{name}(name=${o.doctorDTO.photo})}" th:alt="${o.doctorDTO.photo}">
+                    <div class="media-body">
+                        <h5 class="mt-0 mb-1 header" th:text="${o.doctorDTO.name} + ' ' + ${o.doctorDTO.surname}"></h5>
+                        <p>
+                            <span th:text="${o.opinionDate} + ' ' + ${o.description}"></span>
+                            <br/>
+                            <span class="fa fa-star checked" th:each="star:${#numbers.sequence(0,o.quality - 1)}"></span>
+                        </p>
+                        <p><span th:text="${o.patientDTO.name} + ' ' + ${o.patientDTO.surname}"></span></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div th:include="fragments/footer"></div>
+
+
+</body>
+</html>

@@ -1,0 +1,478 @@
+[
+  {
+    "id": null,
+    "doctorDTO": {
+      "id": null,
+      "name": "ULA",
+      "surname": "BAK",
+      "birthday": "1960-03-15",
+      "userName": "ub",
+      "password": "ub",
+      "email": "ub@wp.pl",
+      "active": true,
+      "registrationDate": "2014-05-05",
+      "experience": "11 lat studiów.",
+      "photo": "5555",
+      "description": "Duża wiedza z zakresy okulistyki.",
+      "specializationDTO":   {
+        "id": null,
+        "name": "okulistyka"
+      },
+      "workplaceDTO": {
+        "id": null,
+        "name": "KRAKOW CLINIC",
+        "description": "Medycyna estetyczna.",
+        "addressDTO": {
+          "id": null,
+          "city": "KRAKOW",
+          "street": "OLIWNA",
+          "number": 5,
+          "postalCode": "03-333"
+        }
+      },
+      "nationalityDTO": {
+        "id": null,
+        "name": "USA"
+      }
+    },
+    "patientDTO": {
+      "id": null,
+      "name": "MARCIN",
+      "surname": "KOWALSKI",
+      "birthday": "1990-02-02",
+      "userName": "mk",
+      "password": "mk",
+      "email": "mk@wp.pl",
+      "active": true,
+      "registrationDate": "2018-11-11",
+      "creditCardNumber": "11111",
+      "insuranceNumber": "111112",
+      "gender": "MALE",
+      "weight": 88,
+      "height": 189,
+      "nationalityDTO": {
+        "id": null,
+        "name": "POLSKA"
+      }
+    },
+    "diseaseDTO": {
+      "id": null,
+      "name": "nowotwór jelita",
+      "importance": "ZAGROŻENIE_ZYCIA",
+      "specializationDTO": {
+        "id": null,
+        "name": "onkolog"
+      }
+    },
+    "description": "Bóle brzucha. Konieczna operacja.",
+    "date": "2018-03-04"
+  },
+  {
+    "id": null,
+    "doctorDTO": {
+      "id": null,
+      "name": "MARCIN",
+      "surname": "NOREK",
+      "birthday": "1960-03-15",
+      "userName": "mn",
+      "password": "mn",
+      "email": "mn@wp.pl",
+      "active": true,
+      "registrationDate": "2011-01-05",
+      "experience": "studia w USA",
+      "photo": "5555",
+      "description": "Duża widza z kardiochirurgii.",
+      "specializationDTO":   {
+        "id": null,
+        "name": "kardiologia"
+      },
+      "workplaceDTO": {
+        "id": null,
+        "name": "KRAKOW CLINIC",
+        "description": "Medycyna estetyczna.",
+        "addressDTO": {
+          "id": null,
+          "city": "KRAKOW",
+          "street": "OLIWNA",
+          "number": 5,
+          "postalCode": "03-333"
+        }
+      },
+      "nationalityDTO": {
+        "id": null,
+        "name": "ROSJA"
+      }
+    },
+    "patientDTO": {
+      "id": null,
+      "name": "OLA",
+      "surname": "PAWLAK",
+      "birthday": "1989-09-09",
+      "userName": "op",
+      "password": "op",
+      "email": "op@wp.pl",
+      "active": true,
+      "registrationDate": "2019-01-11",
+      "creditCardNumber": "2222",
+      "insuranceNumber": "2222",
+      "gender": "FEMALE",
+      "weight": 55,
+      "height": 167,
+      "nationalityDTO": {
+        "id": null,
+        "name": "WŁOCHY"
+      }
+    },
+    "diseaseDTO": {
+      "id": null,
+      "name": "Ból głowy",
+      "importance": "NIEWIELKIE",
+      "specializationDTO": {
+        "id": null,
+        "name": "neurologia"
+      }
+    },
+    "description": "Powracające bóle głowy. Do dalszej obserwacji.",
+    "date": "2018-05-05"
+  },
+  {
+    "id": null,
+    "doctorDTO": {
+      "id": null,
+      "name": "MARCIN",
+      "surname": "NOREK",
+      "birthday": "1960-03-15",
+      "userName": "mn",
+      "password": "mn",
+      "email": "mn@wp.pl",
+      "active": true,
+      "registrationDate": "2011-01-05",
+      "experience": "studia w USA",
+      "photo": "5555",
+      "description": "Duża widza z kardiochirurgii.",
+      "specializationDTO":   {
+        "id": null,
+        "name": "kardiologia"
+      },
+      "workplaceDTO": {
+        "id": null,
+        "name": "KRAKOW CLINIC",
+        "description": "Medycyna estetyczna.",
+        "addressDTO": {
+          "id": null,
+          "city": "KRAKOW",
+          "street": "OLIWNA",
+          "number": 5,
+          "postalCode": "03-333"
+        }
+      },
+      "nationalityDTO": {
+        "id": null,
+        "name": "ROSJA"
+      }
+    },
+    "patientDTO": {
+      "id": null,
+      "name": "OLA",
+      "surname": "PAWLAK",
+      "birthday": "1989-09-09",
+      "userName": "op",
+      "password": "op",
+      "email": "op@wp.pl",
+      "active": true,
+      "registrationDate": "2019-01-11",
+      "creditCardNumber": "2222",
+      "insuranceNumber": "2222",
+      "gender": "FEMALE",
+      "weight": 55,
+      "height": 167,
+      "nationalityDTO": {
+        "id": null,
+        "name": "WŁOCHY"
+      }
+    },
+    "diseaseDTO": {
+      "id": null,
+      "name": "nadciśnienie",
+      "importance": "NIEWIELKIE",
+      "specializationDTO": {
+        "id": null,
+        "name": "kardiologia"
+      }
+    },
+    "description": "Ciśnienie 180 / 140. Konieczne tabletki.",
+    "date": "2019-01-04"
+  },
+  {
+    "id": null,
+    "doctorDTO": {
+      "id": null,
+      "name": "MAREK",
+      "surname": "WACLAWCZYK",
+      "birthday": "1995-01-11",
+      "userName": "mw",
+      "password": "mw",
+      "email": "mw@wp.pl",
+      "active": true,
+      "registrationDate": "2018-03-05",
+      "experience": "pierwsza praca.",
+      "photo": "5555",
+      "description": "Pierwszy rok specjalizacji z ginekologii.",
+      "specializationDTO":   {
+        "id": null,
+        "name": "ginekolog"
+      },
+      "workplaceDTO": {
+        "id": null,
+        "name": "KRAKOW CLINIC",
+        "description": "Medycyna estetyczna.",
+        "addressDTO": {
+          "id": null,
+          "city": "KRAKOW",
+          "street": "OLIWNA",
+          "number": 5,
+          "postalCode": "03-333"
+        }
+      },
+      "nationalityDTO": {
+        "id": null,
+        "name": "POLSKA"
+      }
+    },
+    "patientDTO": {
+      "id": null,
+      "name": "MATEUSZ",
+      "surname": "DERDA",
+      "birthday": "1988-12-12",
+      "userName": "md",
+      "password": "md",
+      "email": "md@wp.pl",
+      "active": true,
+      "registrationDate": "2016-11-11",
+      "creditCardNumber": "3333",
+      "insuranceNumber": "3333",
+      "gender": "MALE",
+      "weight": 111,
+      "height": 156,
+      "nationalityDTO": {
+        "id": null,
+        "name": "LITWA"
+      }
+    },
+    "diseaseDTO": {
+      "id": null,
+      "name": "Pogoszenie wzroku",
+      "importance": "NIEWIELKIE",
+      "specializationDTO": {
+        "id": null,
+        "name": "okulistyka"
+      }
+    },
+    "description": "Zalecenie okularów lub soczewek",
+    "date": "2017-11-04"
+  },
+  {
+    "id": null,
+    "doctorDTO": {
+      "id": null,
+      "name": "MACIEJ",
+      "surname": "LEW",
+      "birthday": "1976-03-15",
+      "userName": "ml",
+      "password": "ml",
+      "email": "ml@wp.pl",
+      "active": true,
+      "registrationDate": "2016-04-05",
+      "experience": "profesor z okulistyki.",
+      "photo": "5555",
+      "description": "Najlepszy lekarz w kraju.",
+      "specializationDTO":   {
+        "id": null,
+        "name": "okulistyka"
+      },
+      "workplaceDTO": {
+        "id": null,
+        "name": "WAR CLINIC",
+        "description": "Medycyna dla wszytkich.",
+        "addressDTO": {
+          "id": null,
+          "city": "WARSZAWA",
+          "street": "WARZYWNA",
+          "number": 7,
+          "postalCode": "01-100"
+        }
+      },
+      "nationalityDTO": {
+        "id": null,
+        "name": "POLSKA"
+      }
+    },
+    "patientDTO": {
+      "id": null,
+      "name": "WOJTEK",
+      "surname": "NOWAK",
+      "birthday": "2000-05-16",
+      "userName": "wn",
+      "password": "wn",
+      "email": "wn@wp.pl",
+      "active": true,
+      "registrationDate": "2014-11-12",
+      "creditCardNumber": "4444",
+      "insuranceNumber": "4444",
+      "gender": "MALE",
+      "weight": 81,
+      "height": 178,
+      "nationalityDTO": {
+        "id": null,
+        "name": "ROSJA"
+      }
+    },
+    "diseaseDTO": {
+      "id": null,
+      "name": "Nowotwór skóry",
+      "importance": "POWAŻNE",
+      "specializationDTO": {
+        "id": null,
+        "name": "onkolog"
+      }
+    },
+    "description": "Chemioterapia natychmiast!!",
+    "date": "2018-02-24"
+  },
+  {
+    "id": null,
+    "doctorDTO": {
+      "id": null,
+      "name": "ROBERT",
+      "surname": "KROLIK",
+      "birthday": "1960-03-15",
+      "userName": "rk",
+      "password": "rk",
+      "email": "rk@wp.pl",
+      "active": true,
+      "registrationDate": "2013-05-05",
+      "experience": "11 lat studiów.",
+      "photo": "5555",
+      "description": "Onkologia to jego żywioł.",
+      "specializationDTO":   {
+        "id": null,
+        "name": "onkolog"
+      },
+      "workplaceDTO": {
+        "id": null,
+        "name": "WAR CLINIC",
+        "description": "Medycyna dla wszytkich.",
+        "addressDTO": {
+          "id": null,
+          "city": "WARSZAWA",
+          "street": "WARZYWNA",
+          "number": 7,
+          "postalCode": "01-100"
+        }
+      },
+      "nationalityDTO": {
+        "id": null,
+        "name": "BELGIA"
+      }
+    },
+    "patientDTO": {
+      "id": null,
+      "name": "PAULA",
+      "surname": "KRAWCZYK",
+      "birthday": "1950-06-14",
+      "userName": "pk",
+      "password": "pk",
+      "email": "pk@wp.pl",
+      "active": true,
+      "registrationDate": "2014-05-05",
+      "creditCardNumber": "5555",
+      "insuranceNumber": "5555",
+      "gender": "FEMALE",
+      "weight": 77,
+      "height": 164,
+      "nationalityDTO": {
+        "id": null,
+        "name": "USA"
+      }
+    },
+    "diseaseDTO": {
+      "id": null,
+      "name": "Zaćma",
+      "importance": "NIEWIELKIE",
+      "specializationDTO": {
+        "id": null,
+        "name": "okulistyka"
+      }
+    },
+    "description": "Pogorszenie widzenia. Pacjent zgodził się na operacje",
+    "date": "2016-03-04"
+  },
+  {
+    "id": null,
+    "doctorDTO": {
+      "id": null,
+      "name": "ROBERT",
+      "surname": "KROLIK",
+      "birthday": "1960-03-15",
+      "userName": "rk",
+      "password": "rk",
+      "email": "rk@wp.pl",
+      "active": true,
+      "registrationDate": "2013-05-05",
+      "experience": "11 lat studiów.",
+      "photo": "5555",
+      "description": "Onkologia to jego żywioł.",
+      "specializationDTO":   {
+        "id": null,
+        "name": "onkolog"
+      },
+      "workplaceDTO": {
+        "id": null,
+        "name": "WAR CLINIC",
+        "description": "Medycyna dla wszytkich.",
+        "addressDTO": {
+          "id": null,
+          "city": "WARSZAWA",
+          "street": "WARZYWNA",
+          "number": 7,
+          "postalCode": "01-100"
+        }
+      },
+      "nationalityDTO": {
+        "id": null,
+        "name": "BELGIA"
+      }
+    },
+    "patientDTO": {
+      "id": null,
+      "name": "OLA",
+      "surname": "PAWLAK",
+      "birthday": "1989-09-09",
+      "userName": "op",
+      "password": "op",
+      "email": "op@wp.pl",
+      "active": true,
+      "registrationDate": "2019-01-11",
+      "creditCardNumber": "2222",
+      "insuranceNumber": "2222",
+      "gender": "FEMALE",
+      "weight": 55,
+      "height": 167,
+      "nationalityDTO": {
+        "id": null,
+        "name": "WŁOCHY"
+      }
+    },
+    "diseaseDTO": {
+      "id": null,
+      "name": "Arytmia",
+      "importance": "SŁABE",
+      "specializationDTO": {
+        "id": null,
+        "name": "kardiologia"
+      }
+    },
+    "description": "Konieczne badania usg i monitoring całodobowy pracy serca.",
+    "date": "2018-03-04"
+  }
+]

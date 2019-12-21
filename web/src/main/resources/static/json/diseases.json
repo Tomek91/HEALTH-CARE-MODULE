@@ -1,0 +1,75 @@
+[
+  {
+    "id": null,
+    "name": "nowotwór jelita",
+    "importance": "ZAGROŻENIE_ZYCIA",
+    "specializationDTO": {
+      "id": null,
+      "name": "onkolog"
+    }
+  },
+  {
+    "id": null,
+    "name": "Ból głowy",
+    "importance": "NIEWIELKIE",
+    "specializationDTO": {
+      "id": null,
+      "name": "neurologia"
+    }
+  },
+  {
+    "id": null,
+    "name": "nadciśnienie",
+    "importance": "NIEWIELKIE",
+    "specializationDTO": {
+      "id": null,
+      "name": "kardiologia"
+    }
+  },
+  {
+    "id": null,
+    "name": "Pogoszenie wzroku",
+    "importance": "NIEWIELKIE",
+    "specializationDTO": {
+      "id": null,
+      "name": "okulistyka"
+    }
+  },
+  {
+    "id": null,
+    "name": "Nowotwór skóry",
+    "importance": "POWAŻNE",
+    "specializationDTO": {
+      "id": null,
+      "name": "onkolog"
+    }
+  },
+  {
+    "id": null,
+    "name": "Problem z zajściem w ciąże",
+    "importance": "SŁABE",
+    "specializationDTO": {
+      "id": null,
+      "name": "ginekolog"
+    }
+  },
+  {
+    "id": null,
+    "name": "Arytmia",
+    "importance": "SŁABE",
+    "specializationDTO": {
+      "id": null,
+      "name": "kardiologia"
+    }
+  },
+  {
+    "id": null,
+    "name": "Zaćma",
+    "importance": "NIEWIELKIE",
+    "specializationDTO": {
+      "id": null,
+      "name": "okulistyka"
+    }
+  }
+]
+

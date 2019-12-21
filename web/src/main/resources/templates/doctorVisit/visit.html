@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD PATIENT CARD</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:include="fragments/navigation">MENU</div>
+<div class="container">
+    <div class="row">
+        <div class="col-7">
+            <h1>Add new patient card</h1>
+            <form th:action="@{/doctor-visits/add}" method="post" th:object="${patientCard}">
+                <div class="form-group">
+                    <label for="patient">Patient: </label>
+                    <input id="patient" type="text" class="form-control" th:value="${patientCard.patientDTO.name} + ' ' + ${patientCard.patientDTO.surname}" readonly="readonly"/>
+                    <input id="patientId" type="text" class="form-control" th:field="*{patientDTO.id}"  hidden="hidden" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                    <label for="doctor">Doctor</label>
+                    <input id="doctor" type="text" class="form-control" th:value="${patientCard.doctorDTO.name} + ' ' + ${patientCard.doctorDTO.surname}" readonly="readonly"/>
+                    <input id="doctorId" type="text" class="form-control" th:field="*{doctorDTO.id}"  hidden="hidden" readonly="readonly"/>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input id="date" type="date" class="form-control" th:field="*{date}"/>
+                </div>
+                <div th:if="${errors.containsKey('date')}">
+                    <p class="text-danger" th:text="${errors.get('date')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" class="form-control" th:field="*{description}"/>
+                </div>
+                <div th:if="${errors.containsKey('description')}">
+                    <p class="text-danger" th:text="${errors.get('description')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="name">Disease name</label>
+                    <input id="name" type="text" class="form-control" th:field="*{diseaseDTO.name}"/>
+                </div>
+                <div th:if="${errors.containsKey('name')}">
+                    <p class="text-danger" th:text="${errors.get('name')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="importance">Disease importance</label>
+                    <ul id="importance" class="list-inline">
+                        <li class="list-inline-item mr-2" th:each="i : ${importances}">
+                            <input type="radio" th:id="${i}" th:field="*{diseaseDTO.importance}" th:value="${i}" class="mr-1"/>
+                            <label th:for="${i}" th:text="${i}"></label>
+                        </li>
+                    </ul>
+                </div>
+                <div th:if="${errors.containsKey('importance')}">
+                    <p class="text-danger" th:text="${errors.get('importance')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="specialization">Specialization</label>
+                    <input id="specialization" type="text" class="form-control" th:value="${patientCard.diseaseDTO.specializationDTO.name}" readonly="readonly"/>
+                    <input id="specializationId" type="text" class="form-control" th:field="*{diseaseDTO.specializationDTO.id}"  hidden="hidden" readonly="readonly"/>
+                </div>
+                <input type="text" class="form-control" hidden="hidden" readonly="readonly" th:field="*{id}"/>
+                <input type="text" name="visitId" th:value="${visitId}" hidden="hidden" readonly="readonly" />
+                <div class="form-group">
+                    <button class="btn" style="background-color: #304FFE;" type="submit">Add</button>
+                    <button class="btn" style="background-color: #FFF176;" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-4">
+            <h2>Patient card history</h2>
+            <div id="accordion">
+                <div class="card" th:each="p, iStat  : ${patientCards}">
+                    <div class="card-header" id="headingOne">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" th:href="'#collapse' + ${iStat.index}" aria-expanded="true" aria-controls="collapseOne" th:text="${p.date}">
+
+                            </button>
+                        </h5>
+                    </div>
+
+                    <div th:id="'collapse' + ${iStat.index}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                                <p>Patient: <span th:text="${p.patientDTO.name} + ' ' + ${p.patientDTO.surname}"></span></p>
+                                <p>Doctor: <span th:text="${p.doctorDTO.name} + ' ' + ${p.doctorDTO.surname}"></span></p>
+                                <p>Description: <span th:text="${p.description}"></span></p>
+                                <p>Date: <span th:text="${p.date}"></span></p>
+                                <p>Disease name: <span th:text="${p.diseaseDTO.name}"></span></p>
+                                <p>Disease importance: <span th:text="${p.diseaseDTO.importance}"></span></p>
+                                <p>Specialization: <span th:text="${p.diseaseDTO.specializationDTO.name}"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

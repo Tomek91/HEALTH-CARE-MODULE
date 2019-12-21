@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOW ALL ADVICES</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="page-header text-center mt-4 mb-4">
+                    <h1>ADVICES</h1>
+                </div>
+                <ul class="list-unstyled">
+                    <li class="media my-3" style="background-color: oldlace" th:each="a : ${advices}">
+                        <div class="media-body m-3" >
+                            <p >
+                                <span th:text="${a.question}"></span>
+                            </p>
+
+                            <div>
+                                <span th:text="${'ANSWER'}"></span>
+
+                                <div th:if="${a.doctorDTO eq null}">
+                                    <div class="grid mt-2">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <img class="mr-3 rounded-circle d-inline" style="min-width: 70px; max-width: 20px;" th:src="@{/img/deafult.jpg}" th:alt="${'deafult'}">
+                                            </div>
+                                            <div class="col">
+                                                <span th:text="${'Admin'}"></span>
+                                                <br/>
+                                                <span th:text="${a.answer}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div th:if="${a.doctorDTO ne null}">
+                                    <div class="grid mt-2">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                <img class="mr-3 rounded-circle" style="min-width: 70px; max-width: 20px;" th:src="@{/img/{name}(name=${a.doctorDTO.photo})}" th:alt="${a.doctorDTO.photo}">
+                                            </div>
+                                            <div class="col">
+                                                <span th:text="${a.doctorDTO.name} + ' ' + ${a.doctorDTO.surname}"></span>
+                                                <br/>
+                                                <span th:text="${a.answer}"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <ul class="list-inline mt-4">
+                                <li class="list-inline-item">
+                                    <a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/advices/{id}(id=${a.id})}">DETAILS</a>
+                                </li>
+                                <li  class="list-inline-item">
+                                    <form th:action="@{/advices/delete}" method="post"  sec:authorize="hasRole('ROLE_ADMIN')">
+                                        <input type="text" name="id" th:value="${a.id}" hidden="hidden" readonly="readonly" />
+                                        <button class="btn btn-danger btn-sm mr-2" type="submit">DELETE</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

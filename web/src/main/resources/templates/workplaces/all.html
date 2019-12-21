@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SHOW ALL WORKPLACES</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="page-header text-center mt-4 mb-4">
+                    <h1>WORKPLACES</h1>
+                </div>
+                <div class="border mb-4" th:each="w, iStat : ${workplaces}">
+                    <div class="media-body ml-4">
+                        <p><h5 class="mt-0 mb-1 header" th:text="${w.name}"></h5></p>
+                        <p>
+                            Address: <span th:text="${w.addressDTO.city} + ' ' + ${w.addressDTO.street} + ' ' + ${w.addressDTO.number} + ' ' + ${w.addressDTO.postalCode}"></span>
+                            <br/>
+                            Description: <span th:text="${w.description}"></span>
+                        </p>
+                        <ul class="list-inline">
+                            <li class="list-inline-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                                <a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/workplaces/modify/{id}(id=${w.id})}">EDIT</a>
+                            </li>
+                            <li class="list-inline-item">
+<!--                                <a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/workplaces/{id}(id=${w.id})}">DETAILS</a>-->
+
+                                <button type="button" class="btn btn-secondary btn-sm mr-2" data-toggle="modal" th:href="'#modalScrollable' + ${iStat.index}">
+                                    DETAILS
+                                </button>
+
+                                <div class="modal fade" th:id="'modalScrollable' + ${iStat.index}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalScrollableTitle">Workplace details</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="media-body">
+                                                    <table class="table">
+                                                        <tbody>
+                                                        <tr >
+                                                            <td >City</td>
+                                                            <td th:text="${w.name}"></td>
+                                                        </tr>
+                                                        <tr >
+                                                            <td >Address</td>
+                                                            <td th:text="${w.addressDTO.city} + ' ' + ${w.addressDTO.street} + ' ' + ${w.addressDTO.number}"></td>
+                                                        </tr>
+                                                        <tr >
+                                                            <td >Postal code</td>
+                                                            <td th:text="${w.addressDTO.postalCode}"></td>
+                                                        </tr>
+                                                        <tr >
+                                                            <td >Description</td>
+                                                            <td th:text="${w.description}"></td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </li>
+                            <li  class="list-inline-item">
+                                <form th:action="@{/workplaces/delete}" method="post" sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <input type="text" name="id" th:value="${w.id}" hidden="hidden" readonly="readonly" />
+                                    <button class="btn btn-danger btn-sm mr-2" type="submit">DELETE</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

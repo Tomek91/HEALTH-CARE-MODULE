@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>PATIENT CARD</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2" >
+                <div class="media">
+                    <div class="media-body">
+                        <div class="card mb-3" style="width: 18rem;">
+                            <div class="card-header">
+                                <h5 class="mt-0">Patient card details</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Patient: <span th:text="${patientCardDisease.patientDTO.name} + ' ' + ${patientCardDisease.patientDTO.surname}"></span></p>
+                                <p>Doctor: <span th:text="${patientCardDisease.doctorDTO.name} + ' ' + ${patientCardDisease.doctorDTO.surname}"></span></p>
+                                <p>Description: <span th:text="${patientCardDisease.description}"></span></p>
+                                <p>Date: <span th:text="${patientCardDisease.date}"></span></p>
+                                <p>Disease name: <span th:text="${patientCardDisease.diseaseDTO.name}"></span></p>
+                                <p>Disease importance: <span th:text="${patientCardDisease.diseaseDTO.importance}"></span></p>
+                                <p>Specialization: <span th:text="${patientCardDisease.diseaseDTO.specializationDTO.name}"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADVICE</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 offset-3" >
+                <div class="media" style="margin-top: 40px;">
+                    <div class="media-body">
+                        <div class="card mb-3" style="width: 40rem;">
+                            <div class="card-header">
+                                <h5 class="mt-0">Advice details</h5>
+                            </div>
+                            <div class="card-body">
+                                <p>Email: <span th:text="${advice.email}"></span></p>
+                                <p>Question date: <span th:text="${advice.questionDate}"></span></p>
+                                <div th:if="${advice.doctorDTO eq null}">
+                                    <p>Addressee: <span th:text="${'Admin'}"></span></p>
+                                </div>
+                                <div th:if="${advice.doctorDTO ne null}">
+                                    <p>Specialization: <span th:text="${advice.specializationDTO.name}"></span></p>
+                                    <p>Doctor: <span th:text="${advice.doctorDTO.name} + ' ' + ${advice.doctorDTO.surname}"></span></p>
+                                </div>
+                                <p>Question: <span th:text="${advice.question}"></span></p>
+                                <p>Answer: <span th:text="${advice.answer}"></span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

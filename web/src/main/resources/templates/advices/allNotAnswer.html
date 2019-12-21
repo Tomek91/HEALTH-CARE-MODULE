@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOW ALL VISITS</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:include="fragments/navigation">MENU</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <div th:if="${advices.isEmpty()}">
+                <h3 class="text-danger text-center mt-4 mb-4">YOU HAVEN'T GOT ANY QUESTIONS</h3>
+            </div>
+            <ul class="list-unstyled">
+                <li class="media my-3" th:each="a : ${advices}">
+                    <div class="media-body" style="background-color: #FFF59D">
+                        <p class=" m-3">
+                            Question: <span th:text="${a.question}"></span>
+                            <br/>
+                            Email: <span th:text="${a.email}"></span>
+                            <br/>
+                            Date: <span th:text="${a.questionDate}"></span>
+                        </p>
+                        <div class="d-inline">
+                            <form th:action="@{/advices/answer/to-user/{id}(id=${a.id})}" method="post" >
+                                <button class="btn btn-lg btn-block mr-2" style="background-color: #FF6E40" type="submit">ANSWER THE QUESTION</button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

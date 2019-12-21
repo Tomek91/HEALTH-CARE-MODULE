@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>ADD VISIT</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:include="fragments/navigation">MENU</div>
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1>Add new visits</h1>
+            <form th:action="@{/visits/add}" method="post" th:object="${visit}">
+<!--                <div class="form-group">-->
+<!--                    <label for="patients">Patient</label>-->
+<!--                    <select id="patients" th:field="*{patientDTO.id}">-->
+<!--                        <option th:each="p : ${patients}" th:value="${p.id}" th:text="${p.name} + ' ' + ${p.surname}"></option>-->
+<!--                    </select>-->
+<!--                </div>-->
+<!--                <div th:if="${errors.containsKey('patientDTO')}">-->
+<!--                    <p class="text-danger" th:text="${errors.get('patientDTO')}"></p>-->
+<!--                </div>-->
+                <div class="form-group">
+                    <label for="doctors">Doctor</label>
+                    <select id="doctors" th:field="*{doctorDTO.id}">
+                        <option th:each="d : ${doctors}" th:value="${d.id}" th:text="${d.name} + ' ' + ${d.surname}"></option>
+                    </select>
+                </div>
+                <div th:if="${errors.containsKey('doctorDTO')}">
+                    <p class="text-danger" th:text="${errors.get('doctorDTO')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="cost">Cost</label>
+                    <input id="cost" type="number" class="form-control" th:field="*{cost}" readonly="readonly"/>
+                </div>
+                <div th:if="${errors.containsKey('cost')}">
+                    <p class="text-danger" th:text="${errors.get('cost')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input id="date" type="date" class="form-control" th:field="*{date}" readonly="readonly" />
+                </div>
+                <div th:if="${errors.containsKey('date')}">
+                    <p class="text-danger" th:text="${errors.get('date')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="time">Time</label>
+                    <input id="time" type="time" class="form-control" th:field="*{time}" readonly="readonly" />
+                </div>
+                <div th:if="${errors.containsKey('time')}">
+                    <p class="text-danger" th:text="${errors.get('time')}"></p>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" class="form-control" th:field="*{description}"/>
+                </div>
+                <div th:if="${errors.containsKey('description')}">
+                    <p class="text-danger" th:text="${errors.get('description')}"></p>
+                </div>
+                <div class="form-group">
+                    <button class="btn" style="background-color: #304FFE;" type="submit">Add</button>
+                    <button class="btn" style="background-color: #FFF176;" type="reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

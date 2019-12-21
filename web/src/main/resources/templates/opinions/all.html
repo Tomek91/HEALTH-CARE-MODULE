@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <meta charset="UTF-8">
+    <title>SHOW ALL OPINIONS</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/font-awesome/5.7.2/css/all.css" />
+
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="page-header text-center mt-4 mb-4">
+                    <h1>OPINIONS</h1>
+                </div>
+                <ul class="list-unstyled">
+                    <li class="media my-3" style="background-color: lightcyan;" th:each="o : ${opinions}">
+                        <div class="media-body m-3">
+                            <h5 class="mt-0 mb-1 header" th:text="${o.doctorDTO.name} + ' ' + ${o.doctorDTO.surname}"></h5>
+                            <p>
+                                <span th:text="${o.opinionDate} + ' ' + ${o.description}"></span>
+                                <br/>
+                                <span class="fa fa-star checked" th:each="star:${#numbers.sequence(0,o.quality - 1)}"></span>
+                            </p>
+                            <p><span th:text="${o.patientDTO.name} + ' ' + ${o.patientDTO.surname}"></span></p>
+                            <ul class="list-inline">
+                                <li class="list-inline-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                                    <a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/opinions/modify/{id}(id=${o.id})}">EDIT</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/opinions/{id}(id=${o.id})}">DETAILS</a>
+                                </li>
+                                <li  class="list-inline-item">
+                                    <form th:action="@{/opinions/delete}" method="post" sec:authorize="hasRole('ROLE_ADMIN')">
+                                        <input type="text" name="id" th:value="${o.id}" hidden="hidden" readonly="readonly" />
+                                        <button class="btn btn-danger btn-sm mr-2" type="submit">DELETE</button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

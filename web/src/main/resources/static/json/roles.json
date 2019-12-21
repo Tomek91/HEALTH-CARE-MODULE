@@ -1,0 +1,14 @@
+[
+  {
+    "id": null,
+    "name": "ADMIN"
+  },
+  {
+    "id": null,
+    "name": "USER_DOCTOR"
+  },
+  {
+    "id": null,
+    "name": "USER_PATIENT"
+  }
+]

@@ -1,0 +1,113 @@
+<nav class="navbar navbar-dark bg-primary navbar navbar-expand-lg navbar-light"
+     xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+    <a class="navbar-brand" href="/">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item"  sec:authorize="!isAuthenticated()">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/menu">Menu</a>
+            </li>
+<!--            <li class="nav-item dropdown">-->
+<!--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    ADDRESSES-->
+<!--                </a>-->
+<!--                <div class="dropdown-menu" aria-labelledby="navbarDropdown">-->
+<!--                    <a class="dropdown-item" href="/addresses/add" sec:authorize="hasRole('ROLE_ADMIN')">ADD</a>-->
+<!--                    <a class="dropdown-item" href="/addresses">SHOW ALL</a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="nav-item dropdown">-->
+<!--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    WORKPLACES-->
+<!--                </a>-->
+<!--                <div class="dropdown-menu" aria-labelledby="navbarDropdown2">-->
+<!--                    <a class="dropdown-item" href="/workplaces/add" sec:authorize="hasRole('ROLE_ADMIN')">ADD</a>-->
+<!--                    <a class="dropdown-item" href="/workplaces">SHOW ALL</a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="nav-item dropdown">-->
+<!--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    SPECIALIZATIONS-->
+<!--                </a>-->
+<!--                <div class="dropdown-menu" aria-labelledby="navbarDropdown3">-->
+<!--                    <a class="dropdown-item" href="/specializations/add" sec:authorize="hasRole('ROLE_ADMIN')">ADD</a>-->
+<!--                    <a class="dropdown-item" href="/specializations">SHOW ALL</a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="nav-item dropdown">-->
+<!--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    PATIENTS-->
+<!--                </a>-->
+<!--                <div class="dropdown-menu" aria-labelledby="navbarDropdown4">-->
+<!--                    &lt;!&ndash;                    <a class="dropdown-item" href="/patients/add" sec:authorize="hasRole('ROLE_ADMIN')">ADD</a>&ndash;&gt;-->
+<!--                    <a class="dropdown-item" href="/patients">SHOW ALL</a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="nav-item dropdown">-->
+<!--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown5" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    DOCTORS-->
+<!--                </a>-->
+<!--                <div class="dropdown-menu" aria-labelledby="navbarDropdown5">-->
+<!--                    &lt;!&ndash;                    <a class="dropdown-item" href="/doctors/add" sec:authorize="hasRole('ROLE_ADMIN')">ADD</a>&ndash;&gt;-->
+<!--                    <a class="dropdown-item" href="/doctors">SHOW ALL</a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="nav-item dropdown">-->
+<!--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown6" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    VISITS-->
+<!--                </a>-->
+<!--                <div class="dropdown-menu" aria-labelledby="navbarDropdown6">-->
+<!--                    &lt;!&ndash;                    <a class="dropdown-item" href="/visits/add">ADD</a>&ndash;&gt;-->
+<!--                    <a class="dropdown-item" href="/visits">SHOW ALL</a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="nav-item dropdown" >-->
+<!--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown7" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    OPINIONS-->
+<!--                </a>-->
+<!--                <div class="dropdown-menu" aria-labelledby="navbarDropdown7">-->
+<!--                    <a class="dropdown-item" href="/opinions/add" sec:authorize="hasRole('ROLE_USER_PATIENT')">ADD</a>-->
+<!--                    <a class="dropdown-item" href="/opinions">SHOW ALL</a>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--            <li class="nav-item dropdown" >-->
+<!--                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown8" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
+<!--                    ADVICES-->
+<!--                </a>-->
+<!--                <div class="dropdown-menu" aria-labelledby="navbarDropdown8">-->
+<!--                    <a class="dropdown-item" href="/advices/add" sec:authorize="hasRole('ROLE_USER_PATIENT')">ADD</a>-->
+<!--                    <a class="dropdown-item" href="/advices">SHOW ALL</a>-->
+<!--                </div>-->
+<!--            </li>-->
+            <li class="nav-item dropdown" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown9" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    SETUP
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown9">
+                    <a class="dropdown-item" href="/setup/default">MANAGE</a>
+                </div>
+            </li>
+            <li class="nav-item" sec:authorize="hasRole('ROLE_USER_DOCTOR')">
+                <a class="nav-link" href="/doctors/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item" sec:authorize="hasRole('ROLE_USER_PATIENT')">
+                <a class="nav-link" href="/patients/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a class="nav-link" href="/advices/not-answer-adm">Questions</a>
+            </li>
+        </ul>
+
+        <form th:action="@{/app-logout}" method="post" sec:authorize="isAuthenticated()">
+            <input class="btn btn-danger" type="submit" value="Logout"/>
+        </form>
+    </div>
+</nav>
+<hr/>

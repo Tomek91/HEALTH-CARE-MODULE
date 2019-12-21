@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>DASHBOARD</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/webjars/font-awesome/5.7.2/css/all.css" />
+
+    <style>
+        .checked {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+<div th:include="fragments/navigation">MENU</div>
+
+<div class="container">
+
+
+    <div class="row align-items-center my-5">
+        <div class="col-lg-7">
+            <div id="carouselExampleIndicators" class="carousel slide my-4" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <div class="carousel-item active ">
+                        <img class="rounded mx-auto d-block img-fluid" th:src="@{/img/{name}(name=${doctor.photo})}" th:alt="${doctor.name}">
+                    </div>
+                    <div class="carousel-item">
+                        <img class="rounded mx-auto d-block img-fluid" th:src="@{/img/{name}(name=${doctor.photo})}" th:alt="${doctor.name}">
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="col-lg-5">
+            <h1 class="font-weight-light" th:text="${doctor.name + ' ' + doctor.surname + ' (doctor)'}"></h1>
+            <p>Birthday: <span th:text="${doctor.birthday}"></span></p>
+            <p>Nationality: <span th:text="${doctor.nationalityDTO.name}"></span></p>
+            <p>Registration date: <span th:text="${doctor.registrationDate}"></span></p>
+            <p>Workplace: <span th:text="${doctor.workplaceDTO.name}"></span></p>
+            <ul class="list-inline mb-2">
+                <li class="list-inline-item">
+                    <a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/doctors/modify/{id}(id=${doctor.id})}">EDIT</a>
+                </li>
+                <li class="list-inline-item">
+                    <a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/setup/default}">SETTINGS</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a role="button" class="btn btn-info btn-lg btn-block" th:href="@{/doctor-visits}">GO TO VISITS PANEL</a>
+        </li>
+        <li class="list-group-item">
+            <a role="button" class="btn btn-info btn-lg btn-block" th:href="@{/advices/not-answer}">ANSWER THE QUESTIONS</a>
+        </li>
+    </ul>
+
+
+    <div class="card text-white bg-info my-5 py-4 text-center">
+        <div class="card-body">
+            <p class="text-white m-0">Description: <span th:text="${doctor.description}"></span></p>
+            <p class="text-white m-0">Specialization: <span th:text="${doctor.specializationDTO.name}"></span></p>
+            <p class="text-white m-0">Experience: <span th:text="${doctor.experience}"></span></p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">My history visits</h2>
+
+                    <div id="accordion">
+                        <div class="card" th:each="p, iStat  : ${patientCards}">
+                            <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" th:href="'#collapse' + ${iStat.index}" aria-expanded="true" aria-controls="collapseOne" th:text="${p.date}">
+
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div th:id="'collapse' + ${iStat.index}" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    <p>Patient: <span th:text="${p.patientDTO.name} + ' ' + ${p.patientDTO.surname}"></span></p>
+                                    <p>Description: <span th:text="${p.description}"></span></p>
+                                    <p>Date: <span th:text="${p.date}"></span></p>
+                                    <p>Disease name: <span th:text="${p.diseaseDTO.name}"></span></p>
+                                    <p>Disease importance: <span th:text="${p.diseaseDTO.importance}"></span></p>
+                                    <p>Specialization: <span th:text="${p.diseaseDTO.specializationDTO.name}"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <a href="/visits" class="btn btn-secondary btn-sm">Show all visits</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">My advices</h2>
+
+                    <div id="accordionAdvice">
+                        <div class="card" th:each="advice, iStat  : ${advices}">
+                            <div class="card-header" id="headingOneAdvice">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" th:href="'#collapseAdvice' + ${iStat.index}" aria-expanded="true" aria-controls="collapseOne" th:text="${advice.questionDate}">
+
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div th:id="'collapseAdvice' + ${iStat.index}" class="collapse" aria-labelledby="headingOneAdvice" data-parent="#accordionAdvice">
+                                <div class="card-body">
+                                    <p>Email: <span th:text="${advice.email}"></span></p>
+                                    <p>Question date: <span th:text="${advice.questionDate}"></span></p>
+                                    <div th:if="${advice.doctorDTO eq null}">
+                                        <p>Addressee: <span th:text="${'Admin'}"></span></p>
+                                    </div>
+                                    <div th:if="${advice.doctorDTO ne null}">
+                                        <p>Specialization: <span th:text="${advice.specializationDTO.name}"></span></p>
+                                        <p>Doctor: <span th:text="${advice.doctorDTO.name} + ' ' + ${advice.doctorDTO.surname}"></span></p>
+                                    </div>
+                                    <p>Question: <span th:text="${advice.question}"></span></p>
+                                    <p>Answer: <span th:text="${advice.answer}"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="card-footer">
+                    <a href="/advices" class="btn btn-secondary btn-sm">Show all advices</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-5">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h2 class="card-title">Opinions about me</h2>
+
+                    <div id="accordionOpinions">
+                        <div class="card" th:each="opinion, iStat  : ${opinions}">
+                            <div class="card-header" id="headingOneOpinions">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" th:href="'#collapseOpinions' + ${iStat.index}" aria-expanded="true" aria-controls="collapseOne" th:text="${opinion.opinionDate}">
+
+                                    </button>
+                                </h5>
+                            </div>
+
+                            <div th:id="'collapseOpinions' + ${iStat.index}" class="collapse" aria-labelledby="headingOneOpinions" data-parent="#accordionOpinions">
+                                <div class="card-body">
+                                    <p>Patient: <span th:text="${opinion.patientDTO.name} + ' ' + ${opinion.patientDTO.surname}"></span></p>
+                                    <p>Description: <span th:text="${opinion.description}"></span></p>
+                                    <p>Quality:  <span class="fa fa-star checked" th:each="star:${#numbers.sequence(0,opinion.quality - 1)}"></span></p>
+                                    <p>Opinion date: <span th:text="${opinion.opinionDate}"></span></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    <a href="/opinions" class="btn btn-secondary btn-sm">Show all opinions</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+</body>
+</html>

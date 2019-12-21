@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SHOW ALL PATIENTS</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="/webjars/jquery/3.3.1-2/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div th:include="fragments/navigation">MENU</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-6 offset-3">
+                <div class="page-header text-center mt-4 mb-4">
+                    <h1>PATIENTS</h1>
+                </div>
+                <ul class="list-unstyled">
+                    <li th:each="p, iStat : ${patients}">
+                        <div class="card" style="margin-top: 20px;">
+                            <div class="card-header">
+                                <h5 class="mt-0 mb-1 header" th:text="${p.name} + ' ' + ${p.surname}"></h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text">
+                                    Birthday: <span th:text="${p.birthday}"></span>
+                                    <br/>
+                                    Email: <span th:text="${p.email}"></span>
+                                    <br/>
+                                    Username: <span th:text="${p.userName}"></span>
+                                </p>
+
+                                <ul class="list-inline">
+                                    <li class="list-inline-item" sec:authorize="hasRole('ROLE_ADMIN')">
+                                        <a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/patients/modify/{id}(id=${p.id})}">EDIT</a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <!--<a role="button" class="btn btn-secondary btn-sm mr-2" th:href="@{/patients/{id}(id=${p.id})}">DETAILS</a>-->
+                                        <button type="button" class="btn btn-secondary btn-sm mr-2" data-toggle="modal" th:href="'#modalScrollable' + ${iStat.index}">
+                                            DETAILS
+                                        </button>
+
+                                        <div class="modal fade" th:id="'modalScrollable' + ${iStat.index}"  tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalScrollableTitle">Patient details</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="media-body">
+
+                                                            <table class="table">
+                                                                <tbody>
+                                                                    <tr >
+                                                                        <td >Name</td>
+                                                                        <td th:text="${p.name}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Surname</td>
+                                                                        <td th:text="${p.surname}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Birthday</td>
+                                                                        <td th:text="${p.birthday}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Gender</td>
+                                                                        <td th:text="${p.gender}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Weight</td>
+                                                                        <td th:text="${p.weight}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Height</td>
+                                                                        <td th:text="${p.height}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Nationality</td>
+                                                                        <td th:text="${p.nationalityDTO.name}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Username</td>
+                                                                        <td th:text="${p.userName}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Nationality</td>
+                                                                        <td th:text="${p.nationalityDTO.name}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Password</td>
+                                                                        <td th:text="${p.password}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Email</td>
+                                                                        <td th:text="${p.email}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Active</td>
+                                                                        <td th:text="${p.active}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Registration date</td>
+                                                                        <td th:text="${p.registrationDate}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Credit card number</td>
+                                                                        <td th:text="${p.creditCardNumber}"></td>
+                                                                    </tr>
+                                                                    <tr >
+                                                                        <td >Insurance number</td>
+                                                                        <td th:text="${p.insuranceNumber}"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li  class="list-inline-item">
+                                        <form th:action="@{/patients/delete}" method="post" sec:authorize="hasRole('ROLE_ADMIN')">
+                                            <input type="text" name="id" th:value="${p.id}" hidden="hidden" readonly="readonly" />
+                                            <button class="btn btn-danger btn-sm mr-2" type="submit">DELETE</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

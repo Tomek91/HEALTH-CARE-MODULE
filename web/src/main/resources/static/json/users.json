@@ -1,0 +1,17 @@
+[
+  {
+    "id": null,
+    "name": "MARIAN",
+    "surname": "PAWLAK",
+    "birthday": "1990-02-02",
+    "userName": "aa",
+    "password": "aa",
+    "email": "aa@wp.pl",
+    "active": true,
+    "registrationDate": "2018-11-11",
+    "roleDTO": {
+      "id": null,
+      "name": "ADMIN"
+    }
+  }
+]
