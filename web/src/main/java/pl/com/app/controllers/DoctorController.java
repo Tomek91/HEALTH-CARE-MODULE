@@ -83,7 +83,6 @@ public class DoctorController {
         return "redirect:/doctors";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping(value = "/modify/{id}")
     public String editDoctor(@PathVariable Long id,
                              Model model) {
