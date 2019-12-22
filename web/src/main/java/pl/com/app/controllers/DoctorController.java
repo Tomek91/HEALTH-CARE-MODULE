@@ -102,7 +102,6 @@ public class DoctorController {
         return "doctors/modify";
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @PostMapping(value = "/modify")
     public String editDoctor(@Valid @ModelAttribute DoctorDTO doctorDTO,
                              BindingResult bindingResult,
